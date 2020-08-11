@@ -88,6 +88,7 @@ char     **ft_parse_map(char const *file_name)
     }
     row = 0;
     col = 0;
+    cols = 0;
     while (read(fd, buf, sizeof(buf)))
     {
         if (buf[0] != '\n')
@@ -98,6 +99,8 @@ char     **ft_parse_map(char const *file_name)
         }
         else
         {
+            if (cols != col && row != 0)
+                return (NULL);
             cols = col;
             row++;
             col = 0;
