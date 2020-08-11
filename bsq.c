@@ -69,7 +69,12 @@ char     **ft_parse_map(char const *file_name)
     int     counter;
     char     **map;
 
-    fd = open(file_name, O_RDONLY);
+    if (file_name)
+        fd = open(file_name, O_RDONLY);
+    else
+        fd = 0;
+    if (fd == -1)
+        return (NULL);
     map = NULL;
     counter = 0;
     while (counter < 5)
